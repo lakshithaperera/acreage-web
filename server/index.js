@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors"); // added
 
 const connectDB = require("./config/MailListdb");
-const connectDBS = require("./config/SurveyFormdb");
+
 
 const app = express();
 
@@ -13,7 +13,7 @@ const survey = require("./routes/SurveyFormRoute");
 
 // connect database
 connectDB();
-connectDBS();
+
 
 // cors
 app.use(cors()); // added
