@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors"); // added
 
-const connectDB = require("./config/MailListdb");
+const connectDB = require("./config/ConnectTodb");
 
 
 const app = express();
