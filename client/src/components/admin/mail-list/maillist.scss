@@ -1,0 +1,84 @@
+.maillin-list{
+   
+  .m-data{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    @media screen and (max-width: 600px) {
+        grid-template-columns: 1fr;
+       }
+    span{
+        flex: 1;
+        padding: 5px;
+        border-bottom: 1px solid #aaa9a9;
+        font-size: 14px;
+    }
+    .delete-btn{
+        background: none;
+        border: none;
+        font-size: 13px;
+        color: red;
+        cursor: pointer;
+    }
+  }
+}
+
+.mail-list-data-container{
+    position: relative;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+    .export-btn{
+   width: 70px;
+   height: 30px;
+   font-size: 13px;
+   cursor: pointer;
+    }
+    .export-container{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        padding: 2rem;
+        gap: 10px;
+        display: flex;
+        user-select: all;
+        display: none;
+        border-radius: 5px;
+        p{
+            font-size: 13px;
+        }
+        @media screen and (max-width: 600px) {
+            display: grid;
+            grid-template-columns: 1fr;
+           }
+
+    }
+    .close-icon{
+        width: 30px;
+        height: 30px;
+        color: #b64747;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        cursor: pointer;
+    }
+    .titiles{
+        margin-top: 1rem;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        @media screen and (max-width: 600px) {
+            display: none;
+           }
+        span{
+            flex: 1;
+            text-align: center;
+            padding: 5px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    }
+}

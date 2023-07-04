@@ -1,0 +1,92 @@
+.admin{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .wrapper{
+        width: 100%;
+        max-width: 1480px;
+        padding: 1rem;
+        .container{
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            padding: 1rem;
+            position: relative;
+            .admin-section{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: var(--white);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                top: 0;
+                left: 0;
+                z-index: 5;
+                .box{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 1rem;
+                    flex-direction: column;
+                    width: 300px;
+                    height: 200px;
+                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                    input{
+                        padding: 5px 0;
+                        padding-left: 10px;
+                        width: 200px;
+                    }
+                    button{
+                        border: none;
+                        background: #BFCB72;
+                        padding: 8px 1.5rem;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .header{
+                height: 60px;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-radius: 5px 5px 0 0;
+                overflow: hidden;
+                
+                button{
+                    flex: 1;
+                    height: 100%;
+                    border: 0;
+                    cursor: pointer;
+                    font-size: 20px;
+                    font-family: 'Courier New', Courier, monospace;
+                    font-weight: 600;
+                    @media screen and (max-width: 600px) {
+                        font-size: 16px;
+                       }
+                }
+                .s-btn{
+                    background: #BFCB72;
+                    color: var(--white);
+                    border: 1px solid #858080;
+                }
+                .m-btn{
+                    background: #BFCB72;
+                    color: var(--white);
+                    border: 1px solid #858080;
+                }
+            }
+            .main-sections{
+                background: #ece9ee;
+                width: 100%;
+                .servey-sec{
+                    display: none;
+                }
+               
+            }
+        }
+    }
+}
