@@ -31,7 +31,7 @@ const SignInContainer = () => {
   
     console.log({ todo });
     axios
-      .post("http://localhost:5000/api/todo", todo)
+      .post("https://acreage-web.vercel.app/api/todo", todo)
       .then((res) => {
         setData({ name: "", email: "" });
         console.log(res.data.message);
