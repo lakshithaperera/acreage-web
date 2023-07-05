@@ -131,7 +131,7 @@ const SurveyContainer = () => {
 
     console.log({ survey });
     axios
-      .post("http://localhost:5000/api/survey", data)
+      .post("https://acreage-web.vercel.app/api/survey", data)
       .then((res) => {
         setData({ name: "", email: "", phone: "", propertyaddress: "", residentialRadio: "", commercialRadio: "", industrialRadio: "", q2Radio: "", q3Radio: "", q7Radio: "", q8Radio: "",q9Radio: "", q9Radio2: "" ,q10Radio: "", q10Textarea: "", q11Radio: "", q11Radio2: "", q12Radio: "", q12Radio2: "", q15Radio: "", q15Textarea: "", q16Radio: "", q17Radio: "" });
         console.log(res.data.message);

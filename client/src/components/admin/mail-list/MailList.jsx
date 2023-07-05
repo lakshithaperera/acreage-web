@@ -35,7 +35,7 @@ export function MailList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/todo")
+      .get("https://acreage-web.vercel.app/api/todo")
       .then((res) => {
         console.log(res.data);
         setTodo(res.data);
@@ -46,7 +46,7 @@ export function MailList() {
   }, []);
 
   function handleDelete(e) {
-    axios.delete(`http://localhost:5000/api/todo/${e.target.name}`);
+    axios.delete(`https://acreage-web.vercel.app/api/todo/${e.target.name}`);
 
     setTodo((data) => {
         return data.filter((todo) => todo._id !== e.target.name);
