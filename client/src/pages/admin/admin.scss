@@ -19,12 +19,14 @@
                 height: 100%;
                 background: var(--white);
                 display: flex;
-                align-items: center;
+                align-items: flex-start;
                 justify-content: center;
                 top: 0;
                 left: 0;
                 z-index: 5;
                 .box{
+                    position: absolute;
+                    top: 4rem;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -64,24 +66,26 @@
                     font-size: 20px;
                     font-family: 'Courier New', Courier, monospace;
                     font-weight: 600;
+                    background: #858080;
+                    border: 1px solid #fff;
+                    transition: 0.4s;
+                    &:hover{
+                        opacity: 0.9;
+                    }
                     @media screen and (max-width: 600px) {
-                        font-size: 16px;
+                        font-size: 15px;
                        }
                 }
                 .s-btn{
-                    background: #BFCB72;
                     color: var(--white);
-                    border: 1px solid #858080;
                 }
                 .m-btn{
-                    background: #BFCB72;
                     color: var(--white);
-                    border: 1px solid #858080;
                 }
             }
             .main-sections{
-                background: #ece9ee;
                 width: 100%;
+                height: 100vh;
                 .servey-sec{
                     display: none;
                 }

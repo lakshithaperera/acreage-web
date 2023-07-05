@@ -21,8 +21,9 @@ function TodoCard({ data, handleDelete  }) {
 
 export function MailList() {
   const [todo, setTodo] = useState([]);
-
   const [isOpen, setIsOpen] = useState(true);
+  const [copiedText, setCopiedText] = useState("");
+
   const handleToggle = () => {
     setIsOpen(!isOpen);
     document.querySelector(".export-container").style.display = "flex";
@@ -49,30 +50,52 @@ export function MailList() {
     axios.delete(`https://acreage-web.vercel.app/api/todo/${e.target.name}`);
 
     setTodo((data) => {
-        return data.filter((todo) => todo._id !== e.target.name);
+      return data.filter((todo) => todo._id !== e.target.name);
     });
-}
+  }
+
+  function handleCopy() {
+    const textToCopy = todo.map((data) => data.email).join(", ");
+    navigator.clipboard
+      .writeText(textToCopy)
+      .then(() => {
+        setCopiedText(textToCopy);
+      })
+      .catch((error) => {
+        console.error("Failed to copy text: ", error);
+      });
+  }
 
   return (
     <div className="mail-list-data-container">
       <button onClick={handleToggle} className="export-btn">
-        {" "}
-        Export{" "}
+        Export
       </button>
       <div className="export-container">
         <IoMdCloseCircle onClick={handleClose} className="close-icon" />
-        {todo.map((data) => (
-          <p>{data.email}</p>
+        <div className="emails">
+        {todo.map((data, index) => (
+          
+             <p key={index} className="exported-bay">
+            {data.email}
+          </p>
+          
+          
         ))}
+        </div>
+        <button className="copy-btn" onClick={handleCopy}>
+          copy
+        </button>
+        {copiedText && <p className="copy-success">Copied</p>}
       </div>
       <div className="titiles">
         <span>Name</span>
         <span>Email</span>
       </div>
-
       {todo.map((data) => (
         <TodoCard data={data} handleDelete={handleDelete} />
       ))}
     </div>
   );
 }
+

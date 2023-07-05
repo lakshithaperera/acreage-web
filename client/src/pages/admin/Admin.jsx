@@ -47,8 +47,9 @@ const Admin = () => {
             </div>
           )}
                <div className="header">
+               <button onClick={handleMailling} className='m-btn'>Mailling list</button>
                <button onClick={handleServey} className='s-btn'>Survey data</button>
-                   <button onClick={handleMailling} className='m-btn'>Mailling list</button>
+                   
                </div>
                 <div className="main-sections">
                    
