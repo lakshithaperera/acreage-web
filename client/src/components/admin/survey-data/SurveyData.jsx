@@ -29,9 +29,9 @@ function SurveyCard({ data, handleDelete  }) {
        <div className="col">
            <div className="title">1.</div>
            <div className="answer three-ans">
-            <p>Residential = {residentialRadio}</p>
-            <p>Commercial = {commercialRadio}</p>
-            <p>Industrial = {industrialRadio}</p>
+            <p>Residential:{residentialRadio}</p>
+            <p>Commercial:  {commercialRadio}</p>
+            <p>Industrial:  {industrialRadio}</p>
            </div>
        </div>
        <div className="col">

@@ -73,6 +73,10 @@ export function MailList() {
       </button>
       <div className="export-container">
         <IoMdCloseCircle onClick={handleClose} className="close-icon" />
+        <button className="copy-btn" onClick={handleCopy}>
+          copy
+        </button>
+        {copiedText && <p className="copy-success">Copied</p>}
         <div className="emails">
         {todo.map((data, index) => (
           
@@ -83,10 +87,7 @@ export function MailList() {
           
         ))}
         </div>
-        <button className="copy-btn" onClick={handleCopy}>
-          copy
-        </button>
-        {copiedText && <p className="copy-success">Copied</p>}
+       
       </div>
       <div className="titiles">
         <span>Name</span>
