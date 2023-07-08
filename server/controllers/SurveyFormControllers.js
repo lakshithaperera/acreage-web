@@ -15,18 +15,28 @@ exports.getAllSurvey = (req, res) => {
 
 
 exports.postCreateSurvey = (req, res) => {
-  const { name, email, phone, propertyaddress, residentialRadio, commercialRadio, industrialRadio, q2Radio, q3Radio, q7Radio, q8Radio,q9Radio, q9Radio2, q10Radio, q10Textarea, q11Radio, q11Radio2, q12Radio, q12Radio2, q15Radio, q15Textarea, q16Radio, q17Radio} = req.body;
+  const { name, email, phone, propertyaddress, checkboxResidential, residentialRadio, checkboxCommercial, commercialRadio, checkboxIndustrial, industrialRadio, q2Radio, q3Radio, q4CheckboxNewLook, q4CheckboxIncreaseValue, q4CheckboxCommercializeProperty, q4CheckboxAdditional, q4CheckboxCuriosity, q5Textarea, q6Radio, q7Radio, q8Radio,q9Radio, q9Radio2, q10Radio, q10Textarea, q11Radio, q11Radio2, q12Radio, q12Radio2, q13CheckboxGeneral,  q13CheckboxPricing, q13CheckboxTiming, q14Radio, q15Radio, q15Textarea, q16Radio, q17Radio} = req.body;
 
   const survey = {
     name: name || "",
     email: email || "",
     phone: phone || "",
       propertyaddress: propertyaddress || "",
+      checkboxResidential: checkboxResidential || "",
       residentialRadio: residentialRadio || "",
+      checkboxCommercial: checkboxCommercial || "",
       commercialRadio: commercialRadio || "",
+      checkboxIndustrial: checkboxIndustrial || "",
       industrialRadio: industrialRadio || "",
       q2Radio: q2Radio || "",
       q3Radio: q3Radio || "",
+      q4CheckboxNewLook: q4CheckboxNewLook || "",
+      q4CheckboxIncreaseValue: q4CheckboxIncreaseValue || "",
+      q4CheckboxCommercializeProperty: q4CheckboxCommercializeProperty || "",
+      q4CheckboxAdditional: q4CheckboxAdditional || "",
+      q4CheckboxCuriosity: q4CheckboxCuriosity || "",
+      q5Textarea: q5Textarea || "",
+      q6Radio: q6Radio || "",
       q7Radio: q7Radio || "",
       q8Radio: q8Radio || "",
       q9Radio: q9Radio || "",
@@ -37,6 +47,10 @@ exports.postCreateSurvey = (req, res) => {
       q11Radio2: q11Radio2 || "",
       q12Radio: q12Radio || "",
       q12Radio2: q12Radio2 || "",
+      q13CheckboxGeneral: q13CheckboxGeneral || "",
+      q13CheckboxPricing: q13CheckboxPricing || "",
+      q13CheckboxTiming: q13CheckboxTiming || "",
+      q14Radio: q14Radio || "",
       q15Radio: q15Radio || "",
       q15Textarea: q15Textarea || "",
       q16Radio: q16Radio || "",

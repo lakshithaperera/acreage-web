@@ -5,6 +5,8 @@ import SignIn from "./pages/sign-in/SignIn";
 import ScrollToTop from './ScrollToTop';
 import Survey from "./pages/survey/Survey";
 import Admin from "./pages/admin/Admin";
+import FormSubmitted from "./pages/Form-submitted/FormSubmitted";
+import SignInComplete from "./pages/sign-in-complete/SignInComplete";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
     <Route path="join-to-mailing-list" element={<SignIn />}></Route>
     <Route path="survey" element={<Survey />}></Route>
     <Route path="admin" element={<Admin />}></Route>
+    <Route path="form-submitted" element={<FormSubmitted />}></Route>
+    <Route path="joining-complete" element={<SignInComplete />}></Route>
     </Routes>
     </ScrollToTop>
     </>

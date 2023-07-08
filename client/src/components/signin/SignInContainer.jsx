@@ -9,42 +9,44 @@ const SignInContainer = () => {
   const navigate = useNavigate();
 
   const navigateToSurvey = () => {
-    navigate("/survey", {
-      
-    });
+    navigate("/survey", {});
   };
 
+  const navigateToJoiningComplete = () => {
+    navigate("/joining-complete", {});
+  };
 
   const [data, setData] = useState({ name: "", email: "" });
 
   function handleChange(e) {
-      setData((data) => ({ ...data, [e.target.name]: e.target.value }));
+    setData((data) => ({ ...data, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     const todo = {
       name: data.name || "",
       email: data.email || "",
     };
-  
+
     console.log({ todo });
     axios
       .post("https://acreage-web.vercel.app/api/todo", todo)
       .then((res) => {
         setData({ name: "", email: "" });
         console.log(res.data.message);
+        // Perform additional action after form submission
+        navigateToJoiningComplete();
       })
       .catch((err) => {
         console.log("Error couldn't create");
         console.log(err.message);
       });
-  }
-  
-  
+  };
+
   return (
-    <section  className="sign-in">
+    <section className="sign-in">
       <div className="wrapper">
         <div className="container">
           <div className="left">
@@ -55,34 +57,44 @@ const SignInContainer = () => {
 
             <p>
               Acreage is a property technology (PropTech) start-up that offers a
-              powerful land use tool. We{" "}
+              powerful land use tool. We
             </p>
 
             <form onSubmit={handleSubmit} className="input-field" noValidate>
               <div className="input-area">
                 <label htmlFor="name">FULL NAME</label>
-                <input  type="text" name="name"
-                        value={data.name}
-                        onChange={handleChange}  />
+                <input
+                  type="text"
+                  name="name"
+                  value={data.name}
+                  onChange={handleChange}
+                />
               </div>
 
               <div htmlFor="email" className="input-area">
                 <label>EMAIL ADDRESS</label>
-                <input type="text" name="email"
-                        value={data.email}
-                        onChange={handleChange} />
+                <input
+                  type="text"
+                  name="email"
+                  value={data.email}
+                  onChange={handleChange}
+                />
               </div>
 
-              <button  type="submit">JOIN OUR MAILING LIST</button>
+              <button className="submit-btn" type="submit">
+                JOIN OUR MAILING LIST
+              </button>
             </form>
-
-            
           </div>
           <div className="right">
             <h2>
-              Complete our survey for early access to the <span>acreage</span>  platform.
+              Complete our survey for early access to the <span>acreage</span>{" "}
+              platform.
             </h2>
-            <p>Acreage is a property technology (PropTech) start-up that offers a powerful land use tool. We</p>
+            <p>
+              Acreage is a property technology (PropTech) start-up that offers a
+              powerful land use tool. We
+            </p>
             <button onClick={() => navigateToSurvey()}>COMPLETE SURVEY</button>
           </div>
         </div>

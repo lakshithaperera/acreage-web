@@ -3,33 +3,33 @@ const mongoose = require("mongoose");
 const SurveySchema = new mongoose.Schema({
   name: {
     type: String,
+    required: true,
   },
   email: {
     type: String,
+    required: true,
   },
   phone: {
     type: String,
+    required: true,
   },
   propertyaddress: {
     type: String,
   },
   checkboxResidential: {
-    type: Boolean,
-    default: false,
+    type: String,
   },
   residentialRadio: {
     type: String,
   },
   checkboxCommercial: {
-    type: Boolean,
-    default: false,
+    type: String,
   },
   commercialRadio: {
     type: String,
   },
   checkboxIndustrial: {
-    type: Boolean,
-    default: false,
+    type: String,
   },
   industrialRadio: {
     type: String,
@@ -38,6 +38,27 @@ const SurveySchema = new mongoose.Schema({
     type: String,
   },
   q3Radio: {
+    type: String,
+  },
+  q4CheckboxNewLook: {
+    type: String,
+  },
+  q4CheckboxIncreaseValue: {
+    type: String,
+  },
+  q4CheckboxCommercializeProperty: {
+    type: String,
+  },
+  q4CheckboxAdditional: {
+    type: String,
+  },
+  q4CheckboxCuriosity: {
+    type: String,
+  },
+  q5Textarea: {
+    type: String,
+  },
+  q6Radio: {
     type: String,
   },
   q7Radio: {
@@ -68,6 +89,18 @@ const SurveySchema = new mongoose.Schema({
     type: String,
   },
   q12Radio2: {
+    type: String,
+  },
+  q13CheckboxGeneral: {
+    type: String,
+  },
+  q13CheckboxPricing: {
+    type: String,
+  },
+  q13CheckboxTiming: {
+    type: String,
+  },
+  q14Radio: {
     type: String,
   },
   q15Radio: {

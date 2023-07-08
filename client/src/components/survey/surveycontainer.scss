@@ -118,6 +118,9 @@
             line-height: 27px;
             letter-spacing: 1.95px;
             color: var(--white);
+            @media screen and (max-width: 350px) {
+             font-size: 12px;
+            }
           }
           input {
             width: 376px;
@@ -206,6 +209,9 @@
             @media screen and (max-width: 950px) {
               font-size: 14px;
             }
+            @media screen and (max-width: 350px) {
+              font-size: 12px;
+             }
           }
         }
 
@@ -300,6 +306,9 @@
               padding-right: 10px;
               font-size: 11px;
             }
+            @media screen and (max-width: 325px) {
+              font-size: 10px;
+             }    
           }
         }
 
@@ -374,6 +383,9 @@
               padding-right: 10px;
               font-size: 11px;
             }
+            @media screen and (max-width: 325px) {
+              font-size: 10px;
+             }  
           }
         }
         .radio-two-options {
@@ -564,14 +576,62 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        p{
-          margin-top: 1rem;
-          color: #bfcb72;
-          font-size: 14px;
-          display: none;
+      }
+      }
+      .chech-box-5{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 1.5rem;
+        margin-top: 1rem !important;
+      }
+      .area-single{
+        margin-top: -2rem;
+        @media screen and (max-width: 750px) {
+          margin-top: -2.5rem !important;
+         }
+         @media screen and (max-width: 750px) {
+          margin-top: -1.5rem !important;
+         }
+      }
+      .questions-6{
+        margin-top: 15rem !important;
+        @media screen and (max-width: 600px) {
+          margin-top: 12rem !important;
+         }
+      }
+     .questions9-radios-main{
+      @media screen and (max-width: 600px) {
+        margin-bottom: 2rem;
         }
+     }
+      .questions9-radios{
+       display: flex;
+       gap: 5px;
+       align-items: center;
+       @media screen and (max-width: 1220px) {
+        flex-direction: column;
+       }
+       @media screen and (max-width: 600px) {
+       position: relative;
+       top: 2.5rem;
+       }
+       .questions9-radios-area{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+       }
+      
       }
-      }
+      .for-top-spece-q10{
+        @media screen and (max-width: 950px) {
+          margin-top: 5rem !important;
+          }
+
+          @media screen and (max-width: 600px) {
+            margin-top: 10rem !important;
+            }
+       }
     }
   }
 }

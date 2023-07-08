@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 import "./surveycontainer.scss";
 import LOGO from "../../assets/logo.svg";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+
 const SurveyContainer = () => {
+  const navigate = useNavigate();
+
+  const navigateFormSubmitted = () => {
+    navigate("/form-submitted", {
+      
+    });
+  };
   const [checkboxChecked, setCheckboxChecked] = useState(false);
 
   const [checkboxChecked1, setCheckboxChecked1] = useState(false);
@@ -11,6 +20,7 @@ const SurveyContainer = () => {
   const [checkboxChecked2, setCheckboxChecked2] = useState(false);
 
   const [showActive, setShowActive] = useState(false);
+  
 
   const handleBudgetChange = (event) => {
     if (event.target.value === "Yes") {
@@ -60,24 +70,26 @@ const SurveyContainer = () => {
     }
   };
 
-  const [formSubMsg, setFormSubMsg] = useState(false);
-  const FormSubMsg = () => {
-    setFormSubMsg(!formSubMsg);
-    document.querySelector(".form-sumbited-tesxt").style.display = "block";
-  };
-
-  
-
   const [data, setData] = useState({
     name: "",
     email: "",
     phone: "",
     propertyaddress: "",
+    checkboxResidential: "",
     residentialRadio: "",
+    checkboxCommercial: "",
     commercialRadio: "",
+    checkboxIndustrial: "",
     industrialRadio: "",
     q2Radio: "",
     q3Radio: "",
+    q4CheckboxNewLook: "",
+    q4CheckboxIncreaseValue: "",
+    q4CheckboxCommercializeProperty: "",
+    q4CheckboxAdditional: "",
+    q4CheckboxCuriosity: "",
+    q5Textarea: "",
+    q6Radio: "",
     q7Radio: "",
     q8Radio: "",
     q9Radio: "",
@@ -88,10 +100,15 @@ const SurveyContainer = () => {
     q11Radio2: "",
     q12Radio: "",
     q12Radio2: "",
+    q13CheckboxGeneral: "",
+    q13CheckboxPricing: "",
+    q13CheckboxTiming: "",
+    q14Radio: "",
     q15Radio: "",
     q15Textarea: "",
     q16Radio: "",
-    q17Radio: ""
+    q17Radio: "",
+    
   });
 
   function handleChangeS(e) {
@@ -101,18 +118,26 @@ const SurveyContainer = () => {
   function handleSubmitS(e) {
     e.preventDefault();
 
-   
-
     const survey = {
       name: data.name || "",
       email: data.email || "",
       phone: data.phone || "",
       propertyaddress: data.propertyaddress || "",
+      checkboxResidential: data.propertyaddress || "",
       residentialRadio: data.residentialRadio || "",
+      checkboxCommercial: data.checkboxCommercial || "",
       commercialRadio: data.commercialRadio || "",
+      checkboxIndustrial: data.checkboxIndustrial || "",
       industrialRadio: data.industrialRadio || "",
       q2Radio: data.q2Radio || "",
       q3Radio: data.q3Radio || "",
+      q4CheckboxNewLook: data.q4CheckboxNewLook || "",
+      q4CheckboxIncreaseValue: data.q4CheckboxIncreaseValue || "",
+      q4CheckboxCommercializeProperty: data.q4CheckboxCommercializeProperty || "",
+      q4CheckboxAdditional: data.q4CheckboxAdditional || "",
+      q4CheckboxCuriosity: data.q4CheckboxCuriosity || "",
+      q5Textarea: data.q5Textarea || "",
+      q6Radio: data.q6Radio || "",
       q7Radio: data.q7Radio || "",
       q8Radio: data.q8Radio || "",
       q9Radio: data.q9Radio || "",
@@ -123,18 +148,62 @@ const SurveyContainer = () => {
       q11Radio2: data.q11Radio2 || "",
       q12Radio: data.q12Radio || "",
       q12Radio2: data.q12Radio2 || "",
+      q13CheckboxGeneral: data.q13CheckboxGeneral || "",
+      q13CheckboxPricing: data.q13CheckboxPricing || "",
+      q13CheckboxTiming: data.q13CheckboxTiming || "",
+      q14Radio: data.q14Radio || "",
       q15Radio: data.q15Radio || "",
       q15Textarea: data.q15Textarea || "",
       q16Radio: data.q16Radio || "",
       q17Radio: data.q17Radio || "",
+      
     };
 
     console.log({ survey });
     axios
       .post("https://acreage-web.vercel.app/api/survey", data)
       .then((res) => {
-        setData({ name: "", email: "", phone: "", propertyaddress: "", residentialRadio: "", commercialRadio: "", industrialRadio: "", q2Radio: "", q3Radio: "", q7Radio: "", q8Radio: "",q9Radio: "", q9Radio2: "" ,q10Radio: "", q10Textarea: "", q11Radio: "", q11Radio2: "", q12Radio: "", q12Radio2: "", q15Radio: "", q15Textarea: "", q16Radio: "", q17Radio: "" });
+        setData({
+          name: "",
+          email: "",
+          phone: "",
+          propertyaddress: "",
+          checkboxResidential: "",
+          residentialRadio: "",
+          checkboxCommercial: "",
+          commercialRadio: "",
+          checkboxIndustrial: "",
+          industrialRadio: "",
+          q2Radio: "",
+          q3Radio: "",
+          q4CheckboxNewLook: "",
+          q4CheckboxIncreaseValue: "",
+          q4CheckboxCommercializeProperty: "",
+          q4CheckboxAdditional: "",
+          q4CheckboxCuriosity: "",
+          q5Textarea: "",
+          q6Radio: "",
+          q7Radio: "",
+          q8Radio: "",
+          q9Radio: "",
+          q9Radio2: "",
+          q10Radio: "",
+          q10Textarea: "",
+          q11Radio: "",
+          q11Radio2: "",
+          q12Radio: "",
+          q12Radio2: "",
+          q13CheckboxGeneral: "",
+          q13CheckboxPricing: "",
+          q13CheckboxTiming: "",
+          q14Radio: "",
+          q15Radio: "",
+          q15Textarea: "",
+          q16Radio: "",
+          q17Radio: "",
+        });
         console.log(res.data.message);
+        navigateFormSubmitted();
       })
       .catch((err) => {
         console.log("Error couldn't create");
@@ -143,7 +212,7 @@ const SurveyContainer = () => {
   }
 
   return (
-    <section className="survey">
+    <section className="survey" id="survey-container-s">
       <div className="wrapper">
         <div className="container">
           <div className="logo">
@@ -151,7 +220,7 @@ const SurveyContainer = () => {
             <img src={LOGO} alt="" />
           </div>
           <h1>feedback survey</h1>
-          <form onSubmit={handleSubmitS} >
+          <form onSubmit={handleSubmitS}>
             <div className="title">
               <h6>Basic Information.</h6>
               <p>
@@ -162,27 +231,44 @@ const SurveyContainer = () => {
             <div className="input-field">
               <div className="input-area">
                 <label>FULL NAME</label>
-                <input value={data.name} onChange={handleChangeS} type="text" name="name" />
+                <input
+                  value={data.name}
+                  onChange={handleChangeS}
+                  type="text"
+                  name="name"
+                />
               </div>
 
               <div className="input-area">
                 <label>EMAIL ADDRESS</label>
-                <input value={data.email}
-                        onChange={handleChangeS} type="text" name="email" />
+                <input
+                  value={data.email}
+                  onChange={handleChangeS}
+                  type="text"
+                  name="email"
+                />
               </div>
             </div>
 
             <div className="input-field">
               <div className="input-area">
                 <label>PHONE NUMBER</label>
-                <input type="text" name="phone" value={data.phone}
-                        onChange={handleChangeS} />
+                <input
+                  type="text"
+                  name="phone"
+                  value={data.phone}
+                  onChange={handleChangeS}
+                />
               </div>
 
               <div className="input-area">
                 <label>PROPERTY ADDRESS</label>
-                <input type="text" name="propertyaddress" value={data.propertyaddress}
-                        onChange={handleChangeS} />
+                <input
+                  type="text"
+                  name="propertyaddress"
+                  value={data.propertyaddress}
+                  onChange={handleChangeS}
+                />
               </div>
             </div>
 
@@ -203,13 +289,14 @@ const SurveyContainer = () => {
               <div className="check-box">
                 <input
                   type="checkbox"
-                  id="residential"
-                  name="residential"
+                  name="checkboxResidential"
                   value="residential"
                   checked={checkboxChecked}
-                  onChange={() => setCheckboxChecked(!checkboxChecked)}
+                  onChange={(event) =>{ setCheckboxChecked(!checkboxChecked);
+                    handleChangeS(event);
+                    }}
                 />
-                <label htmlFor="residential"> Residential </label>
+                <label htmlFor="checkboxResidential"> Residential </label>
               </div>
 
               {checkboxChecked && (
@@ -221,7 +308,7 @@ const SurveyContainer = () => {
                     value="<1 Year"
                     onChange={handleChangeS}
                   />
-                  <label htmlFor="residentialRadio"> &lt;1 Year</label>
+                  <label htmlFor="residentialRadio"> &lt; 1 Year</label>
 
                   <input
                     type="radio"
@@ -229,7 +316,7 @@ const SurveyContainer = () => {
                     value="<5 Years"
                     onChange={handleChangeS}
                   />
-                  <label htmlFor="residentialRadio">&lt;5 Years</label>
+                  <label htmlFor="residentialRadio">&lt; 5 Years</label>
 
                   <input
                     type="radio"
@@ -237,7 +324,7 @@ const SurveyContainer = () => {
                     value="<10 Years"
                     onChange={handleChangeS}
                   />
-                  <label htmlFor="residentialRadio">&lt;10 Years</label>
+                  <label htmlFor="residentialRadio">&lt; 10 Years</label>
                 </div>
               )}
 
@@ -251,7 +338,7 @@ const SurveyContainer = () => {
                     value="< 1 year"
                     disabled
                   />
-                  <label htmlFor="1year"> &lt;1 Year</label>
+                  <label htmlFor="1year"> &lt; 1 Year</label>
 
                   <input
                     type="radio"
@@ -260,7 +347,7 @@ const SurveyContainer = () => {
                     value="< 5 year"
                     disabled
                   />
-                  <label htmlFor="5year">&lt;5 Years</label>
+                  <label htmlFor="5year">&lt; 5 Years</label>
 
                   <input
                     type="radio"
@@ -269,7 +356,7 @@ const SurveyContainer = () => {
                     value="< 10 year"
                     disabled
                   />
-                  <label htmlFor="10year">&lt;10 Years</label>
+                  <label htmlFor="10year">&lt; 10 Years</label>
                 </div>
               )}
             </div>
@@ -278,13 +365,14 @@ const SurveyContainer = () => {
               <div className="check-box">
                 <input
                   type="checkbox"
-                  id="commercial"
-                  name="commercial"
+                  name="checkboxCommercial"
                   value="commercial"
                   checked={checkboxChecked1}
-                  onChange={() => setCheckboxChecked1(!checkboxChecked1)}
+                  onChange={(event) =>{ setCheckboxChecked1(!checkboxChecked1);
+                    handleChangeS(event);
+                    }}
                 />
-                <label htmlFor="commercial"> Commercial </label>
+                <label htmlFor="checkboxCommercial"> Commercial </label>
               </div>
 
               {checkboxChecked1 && (
@@ -296,7 +384,7 @@ const SurveyContainer = () => {
                     value="<1 Year"
                     onChange={handleChangeS}
                   />
-                  <label htmlFor="commercialRadio"> &lt;1 Year</label>
+                  <label htmlFor="commercialRadio"> &lt; 1 Year</label>
 
                   <input
                     type="radio"
@@ -304,7 +392,7 @@ const SurveyContainer = () => {
                     value="<5 Years"
                     onChange={handleChangeS}
                   />
-                  <label htmlFor="commercialRadio">&lt;5 Years</label>
+                  <label htmlFor="commercialRadio">&lt; 5 Years</label>
 
                   <input
                     type="radio"
@@ -312,7 +400,7 @@ const SurveyContainer = () => {
                     value="<10 Years"
                     onChange={handleChangeS}
                   />
-                  <label htmlFor="commercialRadio">&lt;10 Years</label>
+                  <label htmlFor="commercialRadio">&lt; 10 Years</label>
                 </div>
               )}
 
@@ -326,7 +414,7 @@ const SurveyContainer = () => {
                     value="< 1 year"
                     disabled
                   />
-                  <label htmlFor="1year"> &lt;1 Year</label>
+                  <label htmlFor="1year"> &lt; 1 Year</label>
 
                   <input
                     type="radio"
@@ -335,7 +423,7 @@ const SurveyContainer = () => {
                     value="< 5 year"
                     disabled
                   />
-                  <label htmlFor="5year">&lt;5 Years</label>
+                  <label htmlFor="5year">&lt; 5 Years</label>
 
                   <input
                     type="radio"
@@ -344,7 +432,7 @@ const SurveyContainer = () => {
                     value="< 10 year"
                     disabled
                   />
-                  <label htmlFor="10year">&lt;10 Years</label>
+                  <label htmlFor="10year">&lt; 10 Years</label>
                 </div>
               )}
             </div>
@@ -353,13 +441,14 @@ const SurveyContainer = () => {
               <div className="check-box">
                 <input
                   type="checkbox"
-                  id="industrial"
-                  name="industrial"
+                  name="checkboxIndustrial"
                   value="industrial"
                   checked={checkboxChecked2}
-                  onChange={() => setCheckboxChecked2(!checkboxChecked2)}
+                  onChange={(event) =>{ setCheckboxChecked2(!checkboxChecked2);
+                    handleChangeS(event);
+                    }}
                 />
-                <label htmlFor="industrial"> Industrial </label>
+                <label htmlFor="checkboxIndustrial"> Industrial </label>
               </div>
 
               {checkboxChecked2 && (
@@ -371,7 +460,7 @@ const SurveyContainer = () => {
                     value="<1 Year"
                     onChange={handleChangeS}
                   />
-                  <label htmlFor="industrialRadio"> &lt;1 Year</label>
+                  <label htmlFor="industrialRadio"> &lt; 1 Year</label>
 
                   <input
                     type="radio"
@@ -379,7 +468,7 @@ const SurveyContainer = () => {
                     value="<5 Years"
                     onChange={handleChangeS}
                   />
-                  <label htmlFor="industrialRadio">&lt;5 Years</label>
+                  <label htmlFor="industrialRadio">&lt; 5 Years</label>
 
                   <input
                     type="radio"
@@ -387,7 +476,7 @@ const SurveyContainer = () => {
                     value="<10 Years"
                     onChange={handleChangeS}
                   />
-                  <label htmlFor="industrialRadio">&lt;10 Years</label>
+                  <label htmlFor="industrialRadio">&lt; 10 Years</label>
                 </div>
               )}
 
@@ -401,7 +490,7 @@ const SurveyContainer = () => {
                     value="< 1 year"
                     disabled
                   />
-                  <label htmlFor="1year"> &lt;1 Year</label>
+                  <label htmlFor="1year"> &lt; 1 Year</label>
 
                   <input
                     type="radio"
@@ -410,7 +499,7 @@ const SurveyContainer = () => {
                     value="< 5 year"
                     disabled
                   />
-                  <label htmlFor="5year">&lt;5 Years</label>
+                  <label htmlFor="5year">&lt; 5 Years</label>
 
                   <input
                     type="radio"
@@ -419,7 +508,7 @@ const SurveyContainer = () => {
                     value="< 10 year"
                     disabled
                   />
-                  <label htmlFor="10year">&lt;10 Years</label>
+                  <label htmlFor="10year">&lt; 10 Years</label>
                 </div>
               )}
             </div>
@@ -457,9 +546,7 @@ const SurveyContainer = () => {
                 value="Yes"
                 onChange={handleChangeS}
               />
-              <label for="q3Radio">
-                Yes, I have
-              </label>
+              <label for="q3Radio">Yes, I have</label>
 
               <input
                 type="radio"
@@ -467,9 +554,7 @@ const SurveyContainer = () => {
                 value="No"
                 onChange={handleChangeS}
               />
-              <label for="q3Radio">
-                No, I haven’t
-              </label>
+              <label for="q3Radio">No, I haven’t</label>
             </div>
 
             {/* Questions 4 */}
@@ -478,6 +563,53 @@ const SurveyContainer = () => {
               4. What are your primary reasons for considering property
               renovations? (provide options)
             </h5>
+            <div className="property-types chech-box-5">
+            <div className="check-box">
+                <input
+                  type="checkbox"
+                  name="q4CheckboxNewLook"
+                  value="Desire for a new look/feel of your property"
+                  onChange={handleChangeS}
+                />
+                <label htmlFor="q4checkboxnewlook"> Desire for a new look/feel of your property </label>
+              </div>
+              <div className="check-box">
+                <input
+                  type="checkbox"
+                  name="q4CheckboxIncreaseValue"
+                  value="Increase the value of the property"
+                  onChange={handleChangeS}
+                />
+                <label htmlFor="q4CheckboxIncreaseValue"> Increase the value of the property </label>
+              </div>
+              <div className="check-box">
+                <input
+                  type="checkbox"
+                  name="q4CheckboxCommercializeProperty"
+                  value="To commercialize property for rent"
+                  onChange={handleChangeS}
+                />
+                <label htmlFor="q4CheckboxCommercializeProperty"> To commercialize property for rent </label>
+              </div>
+              <div className="check-box">
+                <input
+                  type="checkbox"
+                  name="q4CheckboxCuriosity"
+                  value="Curiosity"
+                  onChange={handleChangeS}
+                />
+                <label htmlFor="q4CheckboxCuriosity"> Curiosity </label>
+              </div>
+              <div className="check-box">
+                <input
+                  type="checkbox"
+                  name="q4CheckboxAdditional"
+                  value="Other/Additional"
+                  onChange={handleChangeS}
+                />
+                <label htmlFor="q4CheckboxAdditional"> Other/Additional </label>
+              </div>
+            </div>
 
             {/* Questions 5 */}
 
@@ -485,13 +617,61 @@ const SurveyContainer = () => {
               5. Why would you want to redevelop the property that you live in?
               (provide options)
             </h5>
+            <div className="radio radio-active text-area  text area-single">
+                  <textarea
+                    name="q5Textarea"
+                    value={data.q5Textarea}
+                    onChange={handleChangeS}
+                    cols="30"
+                    rows="10"
+                  ></textarea>
+                </div>
 
             {/* Questions 6 */}
 
-            <h5 className="for-space">
+            <h5 className="for-space questions-6">
               6. What are your limitations regarding redevelopment of your
               property?
             </h5>
+            <div className="radio-two-options radio-three-options ">
+              <div className="options">
+                <input
+                  type="radio"
+                  name="q6Radio"
+                  value="Finances"
+                  onChange={handleChangeS}
+                />
+                <label htmlFor="q6Radio">Finances</label>
+              </div>
+              <div className="options">
+                <input
+                  type="radio"
+                  name="q6Radio"
+                  value="Knowledge"
+                  onChange={handleChangeS}
+                />
+                <label htmlFor="q6Radio">Knowledge</label>
+              </div>
+              <div className="options">
+                <input
+                  type="radio"
+                  name="q6Radio"
+                  value="Time"
+                  onChange={handleChangeS}
+                />
+                <label htmlFor="q6Radio">Time</label>
+              </div>
+
+              <div className="options">
+                <input
+                  type="radio"
+                  name="q6Radio"
+                  value="Other/Additional"
+                  onChange={handleChangeS}
+                />
+                <label htmlFor="q6Radio">Other/Additional</label>
+              </div>
+            </div>
 
             {/* Questions 7 */}
 
@@ -528,34 +708,28 @@ const SurveyContainer = () => {
                 <input
                   type="radio"
                   name="q8Radio"
-                  value="large role"
+                  value="Cost plays a large role"
                   onChange={handleChangeS}
                 />
-                <label htmlFor="q8Radio">
-                  Cost plays a large role
-                </label>
+                <label htmlFor="q8Radio">Cost plays a large role</label>
               </div>
               <div className="options">
                 <input
                   type="radio"
                   name="q8Radio"
-                  value="somewhat a role"
+                  value="Cost plays somewhat a role"
                   onChange={handleChangeS}
                 />
-                <label htmlFor="q8Radio">
-                  Cost plays somewhat a role.
-                </label>
+                <label htmlFor="q8Radio">Cost plays somewhat a role</label>
               </div>
               <div className="options">
                 <input
                   type="radio"
                   name="q8Radio"
-                  value="no role"
+                  value="Cost plays no role at all"
                   onChange={handleChangeS}
                 />
-                <label htmlFor="q8Radio">
-                  Cost plays no role at all.
-                </label>
+                <label htmlFor="q8Radio">Cost plays no role at all</label>
               </div>
             </div>
 
@@ -570,7 +744,7 @@ const SurveyContainer = () => {
                   value="No"
                   onChange={(event) => {
                     handleChangeS(event);
-                    handleBudgetChange(event);  
+                    handleBudgetChange(event);
                   }}
                 />
                 <label htmlFor="q9Radio">No</label>
@@ -585,43 +759,62 @@ const SurveyContainer = () => {
               </div>
 
               {showActive ? (
-                <div className="radio radio-active mobile-radio-space-top">
+                <div className="radio radio-active mobile-radio-space-top questions9-radios-main">
                   <div className="text">What’s Your Budget</div>
+                  <div className="questions9-radios">
+                  <div className="questions9-radios-area">
                   <input
                     type="radio"
                     name="q9Radio2"
-                    value="<1 Year"
+                    value="< $10,000.00"
                     onChange={handleChangeS}
                   />
-                  <label htmlFor="q9Radio2">&lt;1 Year</label>
+                  <label htmlFor="q9Radio2">&lt; $10,000.00</label>
 
                   <input
                     type="radio"
                     name="q9Radio2"
-                    value="<5 Years"
+                    value="< $25,000.00"
                     onChange={handleChangeS}
                   />
-                  <label htmlFor="q9Radio2">&lt;5 Years</label>
+                  <label htmlFor="q9Radio2">&lt; $25,000.00</label>
 
+
+                  </div>
+                  <div className="questions9-radios-area">
                   <input
                     type="radio"
                     name="q9Radio2"
-                    value="<10 Years"
+                    value="< $50,000.00"
                     onChange={handleChangeS}
                   />
-                  <label htmlFor="q9Radio2">&lt;10 Years</label>
+                  <label htmlFor="q9Radio2">&lt; $50,000.00</label>
+                   
+                  <input
+                    type="radio"
+                    name="q9Radio2"
+                    value="> $50,000.00"
+                    onChange={handleChangeS}
+                  />
+                  <label htmlFor="q9Radio2">&gt; $50,000.00</label>
+                  </div>
+                 
+                  </div>
+                
                 </div>
               ) : (
-                <div className="radio-disable mobile-radio-space-top">
+                <div className="radio-disable mobile-radio-space-top questions9-radios-main">
                   <div className="text">What’s Your Budget</div>
-                  <input
+                  <div className="questions9-radios">
+                    <div className="questions9-radios-area">
+                    <input
                     type="radio"
                     id="1year"
                     name="years"
                     value="< 1 year"
                     disabled
                   />
-                  <label htmlFor="1year">&lt;1 Year</label>
+                  <label htmlFor="1year">&lt; $10,000.00</label>
 
                   <input
                     type="radio"
@@ -630,7 +823,17 @@ const SurveyContainer = () => {
                     value="< 5 year"
                     disabled
                   />
-                  <label htmlFor="5year">&lt;5 Years</label>
+                  <label htmlFor="5year">&lt; $25,000.00</label>
+                    </div>
+                    <div className="questions9-radios-area">
+                    <input
+                    type="radio"
+                    id="10year"
+                    name="years"
+                    value="< 10 year"
+                    disabled
+                  />
+                  <label htmlFor="10year">&lt; $50,000.00</label>
 
                   <input
                     type="radio"
@@ -639,14 +842,17 @@ const SurveyContainer = () => {
                     value="< 10 year"
                     disabled
                   />
-                  <label htmlFor="10year">&lt;10 Years</label>
+                  <label htmlFor="10year">&gt; $50,000.00</label>
+                    </div>
+            
+                  </div>
                 </div>
               )}
             </div>
 
             {/* Questions 10 */}
 
-            <h5 className="for-space mobile-space">
+            <h5 className="for-space mobile-space for-top-spece-q10">
               10. Do you know the initial steps of renovating or redeveloping
               your property?
             </h5>
@@ -658,7 +864,7 @@ const SurveyContainer = () => {
                   value="No"
                   onChange={(event) => {
                     handleChangeS(event);
-                    handleBudgetChange1(event);  
+                    handleBudgetChange1(event);
                   }}
                 />
                 <label htmlFor="initial steps-no">No</label>
@@ -675,7 +881,13 @@ const SurveyContainer = () => {
               {showActive1 ? (
                 <div className="radio radio-active text-area  ">
                   <div className="text">If yes, describe the steps below:</div>
-                  <textarea name="q10Textarea" value={data.q10Textarea} onChange={handleChangeS} cols="30" rows="10"></textarea>
+                  <textarea
+                    name="q10Textarea"
+                    value={data.q10Textarea}
+                    onChange={handleChangeS}
+                    cols="30"
+                    rows="10"
+                  ></textarea>
                 </div>
               ) : (
                 <div className="radio-disable text-area text-area-disable ">
@@ -704,7 +916,7 @@ const SurveyContainer = () => {
                   value="No"
                   onChange={(event) => {
                     handleChangeS(event);
-                    handleBudgetChange2(event);  
+                    handleBudgetChange2(event);
                   }}
                 />
                 <label htmlFor="q11Radio">No</label>
@@ -720,14 +932,14 @@ const SurveyContainer = () => {
 
               {showActive2 ? (
                 <div className="radio radio-active mobile-radio-space-top">
-                  <div className="text">If yes, what’s Your Budget</div>
+                  <div className="text">What’s Your Budget</div>
                   <input
                     type="radio"
                     name="q11Radio2"
                     value="<1 Year"
                     onChange={handleChangeS}
                   />
-                  <label htmlFor="q11Radio2">&lt;1 Year</label>
+                  <label htmlFor="q11Radio2">&lt; 1 Year</label>
 
                   <input
                     type="radio"
@@ -735,7 +947,7 @@ const SurveyContainer = () => {
                     value="<5 Years"
                     onChange={handleChangeS}
                   />
-                  <label htmlFor="q11Radio2">&lt;5 Years</label>
+                  <label htmlFor="q11Radio2">&lt; 5 Years</label>
 
                   <input
                     type="radio"
@@ -743,11 +955,11 @@ const SurveyContainer = () => {
                     value="<10 Years"
                     onChange={handleChangeS}
                   />
-                  <label htmlFor="q11Radio2">&lt;10 Years</label>
+                  <label htmlFor="q11Radio2">&lt; 10 Years</label>
                 </div>
               ) : (
                 <div className="radio-disable mobile-radio-space-top">
-                  <div className="text">If yes, what’s Your Budget</div>
+                  <div className="text">What’s Your Budget</div>
                   <input
                     type="radio"
                     id="1year"
@@ -755,7 +967,7 @@ const SurveyContainer = () => {
                     value="< 1 year"
                     disabled
                   />
-                  <label htmlFor="1year">&lt;1 Year</label>
+                  <label htmlFor="1year">&lt; 1 Year</label>
 
                   <input
                     type="radio"
@@ -764,7 +976,7 @@ const SurveyContainer = () => {
                     value="< 5 year"
                     disabled
                   />
-                  <label htmlFor="5year">&lt;5 Years</label>
+                  <label htmlFor="5year">&lt; 5 Years</label>
 
                   <input
                     type="radio"
@@ -773,7 +985,7 @@ const SurveyContainer = () => {
                     value="< 10 year"
                     disabled
                   />
-                  <label htmlFor="10year">&lt;10 Years</label>
+                  <label htmlFor="10year">&lt; 10 Years</label>
                 </div>
               )}
             </div>
@@ -789,9 +1001,8 @@ const SurveyContainer = () => {
                   value="No"
                   onChange={(event) => {
                     handleChangeS(event);
-                    handleBudgetChange3(event);  
+                    handleBudgetChange3(event);
                   }}
-                  
                 />
                 <label htmlFor="preferred-timeline-no">No</label>
 
@@ -813,7 +1024,7 @@ const SurveyContainer = () => {
                     value="<1 Year"
                     onChange={handleChangeS}
                   />
-                  <label htmlFor="q12Radio2">&lt;1 Year</label>
+                  <label htmlFor="q12Radio2">&lt; 1 Year</label>
 
                   <input
                     type="radio"
@@ -821,7 +1032,7 @@ const SurveyContainer = () => {
                     value="<5 Years"
                     onChange={handleChangeS}
                   />
-                  <label htmlFor="q12Radio2">&lt;5 Years</label>
+                  <label htmlFor="q12Radio2">&lt; 5 Years</label>
 
                   <input
                     type="radio"
@@ -829,9 +1040,7 @@ const SurveyContainer = () => {
                     value="<10 Years"
                     onChange={handleChangeS}
                   />
-                  <label htmlFor="q12Radio2">
-                    &lt;10 Years
-                  </label>
+                  <label htmlFor="q12Radio2">&lt; 10 Years</label>
                 </div>
               ) : (
                 <div className="radio-disable mobile-radio-space-top">
@@ -843,7 +1052,7 @@ const SurveyContainer = () => {
                     value="< 1 year"
                     disabled
                   />
-                  <label htmlFor="1year">&lt;1 Year</label>
+                  <label htmlFor="1year">&lt; 1 Year</label>
 
                   <input
                     type="radio"
@@ -852,7 +1061,7 @@ const SurveyContainer = () => {
                     value="< 5 year"
                     disabled
                   />
-                  <label htmlFor="5year">&lt;5 Years</label>
+                  <label htmlFor="5year">&lt; 5 Years</label>
 
                   <input
                     type="radio"
@@ -861,22 +1070,90 @@ const SurveyContainer = () => {
                     value="< 10 year"
                     disabled
                   />
-                  <label htmlFor="10year">&lt;10 Years</label>
+                  <label htmlFor="10year">&lt; 10 Years</label>
                 </div>
               )}
             </div>
 
             {/* Questions 13 */}
             <h5 className="for-space mobile-space">
-              13. What are your perceived challenges regarding multifamily
-              development? (provide options)
+              13. What are your perceived challenges about renovating?
             </h5>
+            <div className="property-types chech-box-5">
+            <div className="check-box">
+                <input
+                  type="checkbox"
+                  name="q13CheckboxGeneral"
+                  value="General contracting"
+                  onChange={handleChangeS}
+                />
+                <label htmlFor="q4checkboxnewlook"> General contracting </label>
+              </div>
+              <div className="check-box">
+                <input
+                  type="checkbox"
+                  name="q13CheckboxPricing"
+                  value="Fluctuating pricing"
+                  onChange={handleChangeS}
+                />
+                <label htmlFor="q4CheckboxIncreaseValue"> Fluctuating pricing </label>
+              </div>
+              <div className="check-box">
+                <input
+                  type="checkbox"
+                  name="q13CheckboxTiming"
+                  value="Timing"
+                  onChange={handleChangeS}
+                />
+                <label htmlFor="q4CheckboxCommercializeProperty"> Timing  </label>
+              </div>
+            </div>
 
             {/* Questions 14 */}
             <h5 className="for-space ">
               14. What are you least concerned about regarding renovating or
               redeveloping your property? (provide options)
             </h5>
+
+            <div className="radio-two-options radio-three-options ">
+              <div className="options">
+                <input
+                  type="radio"
+                  name="q14Radio"
+                  value="Finances"
+                  onChange={handleChangeS}
+                />
+                <label htmlFor="q14Radio">Finances</label>
+              </div>
+              <div className="options">
+                <input
+                  type="radio"
+                  name="q14Radio"
+                  value="Knowledge"
+                  onChange={handleChangeS}
+                />
+                <label htmlFor="q14Radio">Knowledge</label>
+              </div>
+              <div className="options">
+                <input
+                  type="radio"
+                  name="q14Radio"
+                  value="Time"
+                  onChange={handleChangeS}
+                />
+                <label htmlFor="q14Radio">Time</label>
+              </div>
+
+              <div className="options">
+                <input
+                  type="radio"
+                  name="q14Radio"
+                  value="Other/Additional"
+                  onChange={handleChangeS}
+                />
+                <label htmlFor="q14Radio">Other/Additional</label>
+              </div>
+            </div>
 
             {/* Questions 15 */}
             <h5 className="for-space">
@@ -890,7 +1167,7 @@ const SurveyContainer = () => {
                   value="No"
                   onChange={(event) => {
                     handleChangeS(event);
-                    handleBudgetChange4(event);  
+                    handleBudgetChange4(event);
                   }}
                 />
                 <label htmlFor="q15Radio">No</label>
@@ -907,8 +1184,13 @@ const SurveyContainer = () => {
               {showActive4 ? (
                 <div className="radio radio-active text-area">
                   <div className="text">Describe the steps below:</div>
-                  <textarea  name="q15Textarea"
-                  value={data.q15Textarea} onChange={handleChangeS} cols="30" rows="10"></textarea>
+                  <textarea
+                    name="q15Textarea"
+                    value={data.q15Textarea}
+                    onChange={handleChangeS}
+                    cols="30"
+                    rows="10"
+                  ></textarea>
                 </div>
               ) : (
                 <div className="radio-disable text-area text-area-disable">
@@ -937,9 +1219,7 @@ const SurveyContainer = () => {
                   value="Yes"
                   onChange={handleChangeS}
                 />
-                <label htmlFor="q16Radio">
-                  Yes, I have
-                </label>
+                <label htmlFor="q16Radio">Yes, I have</label>
               </div>
 
               <div className="radio-options-mobile-a">
@@ -949,9 +1229,7 @@ const SurveyContainer = () => {
                   value="No"
                   onChange={handleChangeS}
                 />
-                <label htmlFor="q16Radio">
-                  No, I haven’t
-                </label>
+                <label htmlFor="q16Radio">No, I haven’t</label>
               </div>
             </div>
 
@@ -986,16 +1264,12 @@ const SurveyContainer = () => {
               18. How will you finance the renovation or property upgrades?
               (provide options)
             </h5>
-           
-           <div className="form-sumbit-btn-area">
-           <button onClick={FormSubMsg}
-              type="submit"
-              className="submit-btn"
-            > SUBMIT SURVEY FORM</button>
-            <p className="form-sumbited-tesxt">Your form has been submitted successfully</p>
-           </div>
-           
 
+            <div className="form-sumbit-btn-area">
+              <button type="submit" className="submit-btn">
+                SUBMIT SURVEY FORM
+              </button>
+            </div>
           </form>
         </div>
       </div>

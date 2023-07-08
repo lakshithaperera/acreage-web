@@ -16,6 +16,12 @@ const NavBar = () => {
     });
   };
 
+  const navigateToSurvey = () => {
+    navigate("/survey", {
+      
+    });
+  };
+
   const navigateToSignIn = () => {
     navigate("/join-to-mailing-list", {
       
@@ -49,9 +55,8 @@ const NavBar = () => {
         <div className="menu-close-btn" onClick={handleClose}>
               <IoMdCloseCircle className='menu-close-icon' />
         </div>
-            <a onClick={() => navigateToHome()} href="#hero-two">HOW’S IT WORK</a>
-            <a onClick={() => navigateToHome()} href="#benefit">FEATURES & BENEFITS</a>
-            <a href="/">CONTACT ACREAGE</a>
+            <a onClick={() => navigateToHome()} href="#hero-sec">Welcome To Acreage</a>
+            <a  onClick={() => navigateToSurvey()} href="#survey-container-s">Take Our Survey </a>
             <a onClick={() => navigateToSignIn()} href='#mailing-list'  className='highlight-bg'>JOIN MAILING LIST</a>
         </div>
        </div>

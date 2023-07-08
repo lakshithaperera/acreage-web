@@ -4,8 +4,7 @@ import { IoMdCloseCircle } from "react-icons/io";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-
-function TodoCard({ data, handleDelete  }) {
+function TodoCard({ data, handleDelete }) {
   const { _id, name, email } = data;
 
   return (
@@ -13,7 +12,9 @@ function TodoCard({ data, handleDelete  }) {
       <div className="m-data" key={_id}>
         <span>{name}</span>
         <span>{email}</span>
-        <button className="delete-btn" name={_id} onClick={handleDelete} >Delete</button>
+        <button className="delete-btn" name={_id} onClick={handleDelete}>
+          Delete
+        </button>
       </div>
     </div>
   );
@@ -78,16 +79,12 @@ export function MailList() {
         </button>
         {copiedText && <p className="copy-success">Copied</p>}
         <div className="emails">
-        {todo.map((data, index) => (
-          
-             <p key={index} className="exported-bay">
-            {data.email}
-          </p>
-          
-          
-        ))}
+          {todo.map((data, index) => (
+            <p key={index} className="exported-bay">
+              {data.email}
+            </p>
+          ))}
         </div>
-       
       </div>
       <div className="titiles">
         <span>Name</span>
@@ -99,4 +96,3 @@ export function MailList() {
     </div>
   );
 }
-
