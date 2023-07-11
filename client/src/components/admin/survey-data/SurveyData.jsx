@@ -193,7 +193,7 @@ const SurveyData = () => {
 
   useEffect(() => {
     axios
-      .get("https://acreage-web.vercel.app/api/survey")
+      .get("http://52.15.118.34:5000/api/survey")
       .then((res) => {
         console.log(res.data);
         setSurvey(res.data);
@@ -204,7 +204,7 @@ const SurveyData = () => {
   }, []);
 
   function handleDelete(e) {
-    axios.delete(`https://acreage-web.vercel.app/api/survey/${e.target.name}`);
+    axios.delete(`http://52.15.118.34:5000/api/survey/${e.target.name}`);
 
     setSurvey((data) => {
       return data.filter((survey) => survey._id !== e.target.name);

@@ -161,7 +161,7 @@ const SurveyContainer = () => {
 
     console.log({ survey });
     axios
-      .post("https://acreage-web.vercel.app/api/survey", data)
+      .post("http://52.15.118.34:5000/api/survey", data)
       .then((res) => {
         setData({
           name: "",

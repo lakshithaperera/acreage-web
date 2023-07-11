@@ -4,7 +4,7 @@ import { MailList } from '../../components/admin/mail-list/MailList';
 import SurveyData from '../../components/admin/survey-data/SurveyData';
 
 const Admin = () => {
-  const ADMIN_CODE = "web32a";
+  const ADMIN_CODE = "darkj34q";
   const [isOpen, setIsOpen] = useState(true);
   const [password, setPassword] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);

@@ -32,7 +32,7 @@ const SignInContainer = () => {
 
     console.log({ todo });
     axios
-      .post("https://acreage-web.vercel.app/api/todo", todo)
+      .post("http://52.15.118.34:5000/api/todo", todo)
       .then((res) => {
         setData({ name: "", email: "" });
         console.log(res.data.message);
