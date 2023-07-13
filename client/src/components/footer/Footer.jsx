@@ -44,8 +44,8 @@ Atlanta, Georgia 30309
            <p onClick={() => navigateToSurvey()}>Take Our Survey</p>
            <p onClick={() => navigateToSignIn()}>Join Our Mailing List</p>
           </div>
-          <div className="line"></div>
-          <p>Privacy Policy</p>
+          <div className="line mobile-line-none"></div>
+          <p className="privacy-pol">Privacy Policy</p>
         </div>
       </div>
     </footer>

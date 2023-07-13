@@ -11,9 +11,10 @@ footer{
         display: flex;
         align-items: center;
         justify-content: center;
-        @media screen and (max-width: 500px) {
-            height: unset;
+        @media screen and (max-width: 560px) {
+            height: 500px;
             padding: 3rem 0;
+            align-items: flex-start;
            }
         .container{
             position: relative;
@@ -46,6 +47,18 @@ footer{
                 background: rgba(255, 255, 255, 0.20);
                 margin: 1.5rem 0;
             }
+            .mobile-line-none{
+                @media screen and (max-width: 560px) {
+                    display: none;
+                   }
+            }
+            .privacy-pol{
+                cursor: pointer;
+                @media screen and (max-width: 560px) {
+                    margin-top: 9rem;
+                    font-size: 10px;
+                   }
+            }
             p{
                 font-size: 15px;
                 line-height: 32px;
@@ -61,6 +74,10 @@ footer{
                 margin-top: 10px;
                 display: flex;
                 gap: 25px;
+                @media screen and (max-width: 560px) {
+                    flex-direction: column;
+                    gap: 15px;
+                   }
                 p{
                     cursor: pointer;
                     padding-bottom: 2px;
