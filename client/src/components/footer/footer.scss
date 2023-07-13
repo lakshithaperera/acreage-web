@@ -16,6 +16,7 @@ footer{
             padding: 3rem 0;
            }
         .container{
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -55,7 +56,18 @@ footer{
                    }
             }
             .space{
+                top: 15.5rem;
+                position: absolute;
                 margin-top: 10px;
+                display: flex;
+                gap: 25px;
+                p{
+                    cursor: pointer;
+                    padding-bottom: 2px;
+                    &:hover{
+                        opacity: 0.8;
+                    }
+                }
             }
         }
     }

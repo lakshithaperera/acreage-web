@@ -1,8 +1,29 @@
 import React from "react";
 import "./footer.scss";
 import FOOTER_LOGO from "../../assets/logo.svg";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const navigateToHome = () => {
+    navigate("/", {
+      
+    });
+  };
+
+  const navigateToSurvey = () => {
+    navigate("/survey", {
+      
+    });
+  };
+
+  const navigateToSignIn = () => {
+    navigate("/join-to-mailing-list", {
+      
+    });
+  };
+
   return (
     <footer>
       <div className="wrapper">
@@ -13,16 +34,18 @@ const Footer = () => {
           </div>
           <div className="line"></div>
           <p>
-            Land Analysis PacketLand Analysis Packet <br /> Land Analysis Packet <br /> Land
-            Analysis PacketLand Analysi
+          Acreage LLC. A Georgia Company <br />
+1100 Peachtree St. Northeast | Suite 200 <br />
+Atlanta, Georgia 30309
           </p>
           <div className="line"></div>
-          <p className="space">
-            Welcome to Acreage How’s Acreage Work Key Features & Benefits Join
-            Our Email List.
-          </p>
+          <div className="space">
+           <p onClick={() => navigateToHome()}>Welcome to Acreage</p>
+           <p onClick={() => navigateToSurvey()}>Take Our Survey</p>
+           <p onClick={() => navigateToSignIn()}>Join Our Mailing List</p>
+          </div>
           <div className="line"></div>
-          <p>Acreage Work Key Features & Benefits Join Our Email List.</p>
+          <p>Privacy Policy</p>
         </div>
       </div>
     </footer>
